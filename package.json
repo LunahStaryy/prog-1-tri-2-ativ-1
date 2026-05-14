@@ -1,1 +1,11 @@
-{"dependencies": {}}
+{
+"dependencies": {},
+"name": "projeto",
+"private": true,
+"devDependencies": {
+  "@types/bun": "latest"
+},
+"peerDependencies": {
+  "typescript": "^5"
+}
+}

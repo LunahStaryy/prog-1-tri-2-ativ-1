@@ -66,6 +66,17 @@ class TodoList {
     await this.saveListToDisk()
   }
 
+  async updateItem(index: number, novoTexto: string) {
+    const items = await this.items
+    if (index < 0 || index >= items.length){
+      throw 'índice inválido.'
+    }
+    if (!novoTexto || !novoTexto.trim()){
+      throw 'Novo Texto não pode ser vazio.'
+    }
+    items[index].title = novoTexto
+    await this.saveListToDisk()
+  }
   /**
    * Retona uma cópia da lista de itens
    */

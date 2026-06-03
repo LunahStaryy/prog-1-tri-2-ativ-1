@@ -73,11 +73,33 @@ if (command == 'remove'){
 // --- Comando Update
 // ------------------------------------------------------------------------------
 
-// deveria dizer qual posicao quer atualizar, e passar um novo parametro pra ele
-//ex: atualizar 0
-// ai digita o novo texto
-// ele aparece na lista com o novo texto
 
+if(command == 'update'{
+
+    const indexStr = params[3]
+    const novoValor = params[4]
+    if(!indexStr) {
+        console.error('Informe o índice corretamente')
+        process.exit(1)
+    }    
+    if(!novoValor) {
+        console.error('Informe o texto corretamente')
+        process.exit(1)
+    }
+    const index = parseInt(indexStr)
+    if (isNaN(index)) {
+        console.error("índice precisa ser um número", indexStr)
+        process.exit(1)
+    }
+    try {
+        await todolist.updateItem(index, novoValor)
+    } catch(error) {
+        console.error("Erro ao atualizar o item")
+        process.exit(1)
+    }
+    console.log('Item atualizado com sucesso.')
+    process.exit(0)
+}
 
 // ------------------------------------------------------------------------------
 // --- Fallback para comandos não reconhecidos
